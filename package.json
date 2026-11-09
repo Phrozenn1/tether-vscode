@@ -3,7 +3,7 @@
   "displayName": "Tether — ADHD Flow & Save-State",
   "description": "ADHD flowmodoro timer, automatic context anchoring, and seamless focus tracking",
   "version": "0.1.0",
-  "publisher": "tether",
+  "publisher": "Phrozenn1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Phrozenn1/tether-vscode"
