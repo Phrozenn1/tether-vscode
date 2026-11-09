@@ -5,7 +5,7 @@ import * as os from 'os';
 import { exec } from 'child_process';
 
 interface FlowState {
-  state: 'idle' | 'focus' | 'break' | 'micro';
+  state: 'idle' | 'focus' | 'break' | 'micro' | 'micro_start';
   start_epoch: number;
   break_duration_sec: number;
   elapsed_focus_sec: number;
@@ -94,10 +94,13 @@ function formatTime(seconds: number): string {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+  // Use explicit ID and Right alignment so it's placed nicely alongside editor widgets,
+  // and do NOT override statusBar.color so it respects the user's active theme colors!
+  const statusBar = vscode.window.createStatusBarItem('tether.statusBar', vscode.StatusBarAlignment.Right, 100);
+  statusBar.name = 'Tether Flowmodoro';
   statusBar.command = 'tether.toggleFlow';
   statusBar.tooltip = 'Tether: Flowmodoro & ADHD Save-State (Klikk for å starte/pause)';
-  statusBar.text = '$(compass) Tether: Klar';
+  statusBar.text = '$(compass) 00:00 [KLAR]';
   statusBar.show();
   context.subscriptions.push(statusBar);
 
@@ -105,7 +108,7 @@ export function activate(context: vscode.ExtensionContext) {
   const timer = setInterval(() => {
     const state = readFlowState();
     if (!state) {
-      statusBar.text = '$(compass) Tether: Klar';
+      statusBar.text = '$(compass) 00:00 [KLAR]';
       return;
     }
 
@@ -114,7 +117,6 @@ export function activate(context: vscode.ExtensionContext) {
       case 'focus': {
         const elapsed = state.elapsed_focus_sec + (state.start_epoch > 0 ? (nowEpoch - state.start_epoch) : 0);
         statusBar.text = `$(watch) ${formatTime(elapsed)} [FOKUS]`;
-        statusBar.color = new vscode.ThemeColor('statusBarItem.prominentForeground');
         break;
       }
       case 'break': {
@@ -124,17 +126,20 @@ export function activate(context: vscode.ExtensionContext) {
           remaining = Math.max(0, state.remaining_break_sec - pass);
         }
         statusBar.text = `$(coffee) ${formatTime(remaining)} [PAUSE]`;
-        statusBar.color = new vscode.ThemeColor('statusBarItem.warningForeground');
         break;
       }
-      case 'micro': {
-        statusBar.text = `$(zap) [5 MIN MIKRO]`;
-        statusBar.color = new vscode.ThemeColor('statusBarItem.prominentForeground');
+      case 'micro':
+      case 'micro_start': {
+        let remaining = state.remaining_break_sec || 300;
+        if (state.start_epoch > 0) {
+          const pass = nowEpoch - state.start_epoch;
+          remaining = Math.max(0, 300 - pass);
+        }
+        statusBar.text = `$(zap) ${formatTime(remaining)} [5M MIKRO]`;
         break;
       }
       default:
-        statusBar.text = '$(compass) Tether: Klar';
-        statusBar.color = undefined;
+        statusBar.text = '$(compass) 00:00 [KLAR]';
         break;
     }
   }, 1000);
@@ -252,7 +257,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand('tether.microStart', () => {
       const nowEpoch = Math.floor(Date.now() / 1000);
       const state: FlowState = {
-        state: 'micro',
+        state: 'micro_start',
         start_epoch: nowEpoch,
         break_duration_sec: 0,
         elapsed_focus_sec: 0,

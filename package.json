@@ -1,9 +1,10 @@
 {
   "name": "tether-vscode",
   "displayName": "Tether — ADHD Flow & Save-State",
-  "description": "ADHD flowmodoro timer, automatic context anchoring, and seamless focus tracking",
-  "version": "0.1.0",
+  "description": "ADHD Flowmodoro timer, automatic context save-states, and distraction shielding for VS Code.",
+  "version": "0.1.1",
   "publisher": "Phrozenn1",
+  "icon": "images/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/Phrozenn1/tether-vscode"
@@ -20,7 +21,8 @@
     "timer",
     "focus",
     "pomodoro",
-    "productivity"
+    "productivity",
+    "context-switch"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -30,22 +32,22 @@
     "commands": [
       {
         "command": "tether.toggleFlow",
-        "title": "Start / Pause Flyt (Flowmodoro)",
+        "title": "Start / Pause Flow (Flowmodoro)",
         "category": "Tether"
       },
       {
         "command": "tether.microStart",
-        "title": "5m Mikro-start (Bryt dørstokkmila)",
+        "title": "5m Micro-Start (Break Initiation Barrier)",
         "category": "Tether"
       },
       {
         "command": "tether.ramDump",
-        "title": "Rask RAM-dump (Parkér tanke)",
+        "title": "Rapid RAM Dump (Park a Distracting Thought)",
         "category": "Tether"
       },
       {
         "command": "tether.openDesktop",
-        "title": "Åpne Tether Desktop",
+        "title": "Open Tether Desktop",
         "category": "Tether"
       }
     ],
@@ -55,12 +57,12 @@
         "tether.autoAnchor": {
           "type": "boolean",
           "default": true,
-          "description": "Lagre automatisk fil og linjeposisjon som kontekst-anker for Tether"
+          "description": "Automatically save active file, cursor position, and git branch as context anchor for Tether"
         },
         "tether.showStatusBar": {
           "type": "boolean",
           "default": true,
-          "description": "Vis statuslinje-widget for Flowmodoro i VS Code"
+          "description": "Show Flowmodoro status bar widget in VS Code"
         }
       }
     }
