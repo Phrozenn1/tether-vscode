@@ -1,0 +1,79 @@
+{
+  "name": "tether-vscode",
+  "displayName": "Tether — ADHD Flow & Save-State",
+  "description": "ADHD flowmodoro timer, automatic context anchoring, and seamless focus tracking",
+  "version": "0.1.0",
+  "publisher": "tether",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Phrozenn1/tether-vscode"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Productivity",
+    "Other"
+  ],
+  "keywords": [
+    "adhd",
+    "flowmodoro",
+    "timer",
+    "focus",
+    "pomodoro",
+    "productivity"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tether.toggleFlow",
+        "title": "Start / Pause Flyt (Flowmodoro)",
+        "category": "Tether"
+      },
+      {
+        "command": "tether.microStart",
+        "title": "5m Mikro-start (Bryt dørstokkmila)",
+        "category": "Tether"
+      },
+      {
+        "command": "tether.ramDump",
+        "title": "Rask RAM-dump (Parkér tanke)",
+        "category": "Tether"
+      },
+      {
+        "command": "tether.openDesktop",
+        "title": "Åpne Tether Desktop",
+        "category": "Tether"
+      }
+    ],
+    "configuration": {
+      "title": "Tether",
+      "properties": {
+        "tether.autoAnchor": {
+          "type": "boolean",
+          "default": true,
+          "description": "Lagre automatisk fil og linjeposisjon som kontekst-anker for Tether"
+        },
+        "tether.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Vis statuslinje-widget for Flowmodoro i VS Code"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3"
+  }
+}
