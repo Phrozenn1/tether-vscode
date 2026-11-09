@@ -10,6 +10,8 @@ interface FlowState {
   break_duration_sec: number;
   elapsed_focus_sec: number;
   remaining_break_sec: number;
+  banked_break_sec?: number;
+  focus_at_last_break?: number;
   focus_ratio: number;
   break_ratio: number;
   writer: string;
@@ -209,6 +211,7 @@ export function activate(context: vscode.ExtensionContext) {
           break_duration_sec: 0,
           elapsed_focus_sec: 0,
           remaining_break_sec: 0,
+          banked_break_sec: 0,
           focus_ratio: 45,
           break_ratio: 15,
           writer: 'vscode',
@@ -219,27 +222,50 @@ export function activate(context: vscode.ExtensionContext) {
       } else if (state.state === 'focus') {
         // Switch to break
         const elapsed = state.elapsed_focus_sec + (nowEpoch - state.start_epoch);
-        const earned = Math.round((elapsed * state.break_ratio) / state.focus_ratio);
+        const newlyFocused = elapsed - (state.focus_at_last_break || 0);
+        const earned = Math.round((newlyFocused * state.break_ratio) / state.focus_ratio);
+        const totalBreak = (state.banked_break_sec || 0) + earned;
         state = {
           ...state,
           state: 'break',
           start_epoch: nowEpoch,
           elapsed_focus_sec: elapsed,
-          break_duration_sec: earned,
-          remaining_break_sec: earned,
+          break_duration_sec: Math.max(30, totalBreak),
+          remaining_break_sec: Math.max(30, totalBreak),
+          banked_break_sec: 0,
+          focus_at_last_break: elapsed,
           writer: 'vscode',
           seq: state.seq + 1,
           timestamp: nowEpoch
         };
-        vscode.window.showInformationMessage(`☕ Velfortjent pause på ${formatTime(earned)} startet!`);
+        vscode.window.showInformationMessage(`☕ Velfortjent pause på ${formatTime(totalBreak)} startet!`);
+      } else if (state.state === 'break') {
+        // Resume focus where it left off, and keep remaining break seconds banked!
+        const elapsed = Math.max(0, nowEpoch - state.start_epoch);
+        const remaining = Math.max(0, state.break_duration_sec - elapsed);
+        state = {
+          ...state,
+          state: 'focus',
+          start_epoch: nowEpoch - state.elapsed_focus_sec,
+          break_duration_sec: 0,
+          remaining_break_sec: 0,
+          banked_break_sec: remaining,
+          focus_at_last_break: state.elapsed_focus_sec,
+          writer: 'vscode',
+          seq: state.seq + 1,
+          timestamp: nowEpoch
+        };
+        vscode.window.showInformationMessage(`🚀 Fokus gjenopptatt fra ${formatTime(state.elapsed_focus_sec)}! Du har ${formatTime(remaining)} pause spart til gode.`);
       } else {
-        // Switch back to idle
+        // Switch back to idle (from microstart etc)
         state = {
           ...state,
           state: 'idle',
           start_epoch: 0,
           elapsed_focus_sec: 0,
           remaining_break_sec: 0,
+          banked_break_sec: 0,
+          focus_at_last_break: 0,
           writer: 'vscode',
           seq: state.seq + 1,
           timestamp: nowEpoch
