@@ -45,6 +45,10 @@ For neurodivergent developers and ADHD minds, traditional productivity technique
 ### 🎨 5. Live Theme Adaptive
 - Fully respects your active VS Code theme colors (Omarchy, Tokyo Night, Gruvbox, Catppuccin, Default Dark+/Light+) with high-contrast text readability.
 
+### 🌐 6. Platform-Agnostic Editor Focus Sync
+- Automatically syncs window focus state (`vscode.window.onDidChangeWindowState`) to `editor_focus.json`.
+- Allows Tether Desktop on any OS (Linux, macOS, Windows) to minimize to tray or shrink to Mini-HUD whenever you are actively editing code.
+
 ---
 
 ## 📊 Status Bar Indicators
