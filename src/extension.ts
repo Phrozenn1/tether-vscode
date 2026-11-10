@@ -57,6 +57,29 @@ function getImpulsesPath(): string {
   return path.join(getStateDir(), 'impulses.md');
 }
 
+function getEditorFocusPath(): string {
+  return path.join(getStateDir(), 'editor_focus.json');
+}
+
+function writeEditorFocus(focused: boolean) {
+  try {
+    ensureDir(getStateDir());
+    const data = {
+      editor: 'vscode',
+      focused: focused,
+      pid: process.pid,
+      timestamp: Math.floor(Date.now() / 1000),
+      server_name: ''
+    };
+    const p = getEditorFocusPath();
+    const tmp = `${p}.tmp.${process.pid}`;
+    fs.writeFileSync(tmp, JSON.stringify(data), 'utf8');
+    fs.renameSync(tmp, p);
+  } catch (err) {
+    console.error('Failed to write editor focus:', err);
+  }
+}
+
 function ensureDir(dirPath: string) {
   if (!fs.existsSync(dirPath)) {
     try {
@@ -333,11 +356,23 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 
+  // Window focus state tracking
+  writeEditorFocus(vscode.window.state.focused);
+  context.subscriptions.push(
+    vscode.window.onDidChangeWindowState((windowState) => {
+      writeEditorFocus(windowState.focused);
+      if (!windowState.focused) {
+        saveContextAnchor('Fokus byttet bort fra VS Code');
+      }
+    })
+  );
+
   // Initial anchor save
   saveContextAnchor('Åpnet VS Code');
 }
 
 export function deactivate() {
+  writeEditorFocus(false);
   // Final anchor update on exit
   const editor = vscode.window.activeTextEditor;
   if (editor && editor.document) {
