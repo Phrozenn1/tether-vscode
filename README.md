@@ -4,17 +4,17 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg?style=flat-square)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-Phrozenn1%2Ftether--vscode-181717?style=flat-square&logo=github)](https://github.com/Phrozenn1/tether-vscode)
 
-> **Flowmodoro timer, automatic context save-states, and cognitive anchoring for neurodivergent developers (ADHD, Autism, Dyslexia).**  
+> **Flowmodoro timer, automatic context save-states, and cognitive anchoring for deep work, neurodivergent minds, and focus.**  
 > Seamlessly integrated with [Tether Desktop](https://github.com/Phrozenn1/tether-desktop) and [tether.nvim](https://github.com/Phrozenn1/tether.nvim).
 
 ---
 
 ## 💡 Why Tether?
 
-For neurodivergent developers across the spectrum (**ADHD**, **Autism/ASD**, **Dyslexia**, and **AuDHD**), traditional productivity techniques often fail:
-- **Rigid Pomodoros shatter hyperfocus & monotropic flow:** An arbitrary alarm ringing after 25 minutes interrupts peak problem-solving momentum and causes traumatic context disorientation.
-- **Context-switch paralysis & visual re-orientation:** When an interruption occurs, remembering what you were doing, which file you had open, and what line you were on costs 15–20 minutes of executive and phonological energy.
-- **Initiation & transition barriers:** Getting started on an overwhelming task (or breaking out of autistic inertia) feels like hitting an impenetrable wall.
+Traditional productivity techniques frequently fail modern knowledge workers, writers, and developers—especially neurodivergent minds (**ADHD**, **Autism/ASD**, **Dyslexia**, and **AuDHD**):
+- **Rigid Pomodoros shatter deep focus & flow:** An arbitrary alarm ringing after 25 minutes interrupts peak problem-solving momentum and causes traumatic context disorientation.
+- **Context-switch paralysis & visual re-orientation:** When an interruption occurs, remembering what you were doing, which file you had open, and what line you were on costs 15–20 minutes of executive energy.
+- **Initiation & transition barriers:** Getting started on an overwhelming task (or breaking out of inertia) feels like hitting an impenetrable wall.
 
 **Tether adapts to your brain instead of forcing you into neurotypical boxes:**
 1. **Ride the focus wave** for as long as you have momentum.
