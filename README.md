@@ -1,11 +1,11 @@
 # Tether for Visual Studio Code ⚓
 
 [![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/Phrozenn1.tether-vscode?style=flat-square&color=22d3ee&label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=Phrozenn1.tether-vscode)
-[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg?style=flat-square)](LICENSE)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg?style=flat-square)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-Phrozenn1%2Ftether--vscode-181717?style=flat-square&logo=github)](https://github.com/Phrozenn1/tether-vscode)
 
 > **Flowmodoro timer, automatic context save-states, and cognitive anchoring for deep work, neurodivergent minds, and focus.**  
-> Seamlessly integrated with [Tether Desktop](https://github.com/Phrozenn1/tether-desktop) and [tether.nvim](https://github.com/Phrozenn1/tether.nvim).
+> Seamlessly integrated with [Tether Desktop](https://github.com/Phrozenn1/tether-desktop), [tether.nvim](https://github.com/Phrozenn1/tether.nvim), and [tether-obsidian](https://github.com/Phrozenn1/tether-obsidian).
 
 ---
 
@@ -91,14 +91,22 @@ Customize Tether in your VS Code `settings.json`:
 
 ---
 
-## 🔄 Cross-Editor Ecosystem
+## 🔄 Cross-App Ecosystem
 
 Tether is built as a unified neurodivergent companion across your entire workflow:
-- **[Tether Desktop](https://github.com/Phrozenn1/tether-desktop)**: System tray widget, ambient soundscapes (binaural beats, brown noise), Yak-Alarm, and Side-Quest shield.
-- **[tether.nvim](https://github.com/Phrozenn1/tether.nvim)**: Pure Lua plugin for Neovim with Lualine integration and 1-click terminal resume.
+- **[Tether Desktop](https://github.com/Phrozenn1/tether-desktop)**: System tray / Mini-HUD companion, focus soundscapes (40 Hz Gamma entrainment, Brown/Pink/Green noise, authentic nature field recordings), AI-assisted RAM-dumps, Dopamine Menu, Yak-Alarm / Speedbump, Time Anchor, and Shutdown Ritual.
+- **[tether.nvim](https://github.com/Phrozenn1/tether.nvim)**: Pure Lua plugin for Neovim with floating HUD, context anchor, and 1-click terminal resume.
+- **[tether-obsidian](https://github.com/Phrozenn1/tether-obsidian)**: Native Obsidian plugin with Flowmodoro status bar, note/heading anchoring, RAM-dump CRUD manager, and Shutdown Ritual.
 - **[tether-vscode](https://github.com/Phrozenn1/tether-vscode)**: This extension!
 
-All three share state seamlessly via local IPC files (`~/.local/state/tether/` on Linux, `%LOCALAPPDATA%/tether/` on Windows, `~/Library/Application Support/tether/` on macOS).
+All four share state seamlessly via local IPC files (`~/.local/state/tether/` on Linux, `%LOCALAPPDATA%/tether/` on Windows, `~/Library/Application Support/tether/` on macOS).
+
+---
+
+## 🔬 Scientific Foundation
+
+Tether is engineered from peer-reviewed research in cognitive neuroscience, ADHD, Autism, Dyslexia, and Universal Cognitive Ergonomics:
+- 👉 [**`RESEARCH.md` — Scientific Rationale & Neurodivergent Research Foundation**](https://github.com/Phrozenn1/tether-desktop/blob/main/RESEARCH.md)
 
 ---
 
@@ -113,4 +121,4 @@ Tether for VS Code gir deg ADHD-tilpasset tidsstyring og reduserer overgangsfrik
 
 ## 📄 License
 
-MIT © [Phrozenn1](https://github.com/Phrozenn1)
+[GPL-2.0](LICENSE) © [Phrozenn1](https://github.com/Phrozenn1)
