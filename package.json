@@ -2,9 +2,10 @@
   "name": "tether-vscode",
   "displayName": "Tether — Flowmodoro & Deep Work Companion",
   "description": "Flowmodoro timer, automatic context save-states, and cognitive anchoring for deep work, neurodivergent minds, and focus.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "Phrozenn1",
   "icon": "images/icon.png",
+  "license": "GPL-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Phrozenn1/tether-vscode"
@@ -34,6 +35,11 @@
   "contributes": {
     "commands": [
       {
+        "command": "tether.openHub",
+        "title": "Open Tether Hub",
+        "category": "Tether"
+      },
+      {
         "command": "tether.toggleFlow",
         "title": "Start / Pause Flow (Flowmodoro)",
         "category": "Tether"
@@ -44,8 +50,28 @@
         "category": "Tether"
       },
       {
+        "command": "tether.resetFlow",
+        "title": "Reset Flowmodoro Timer",
+        "category": "Tether"
+      },
+      {
+        "command": "tether.captureImpulse",
+        "title": "Park Impulse / Side-Quest",
+        "category": "Tether"
+      },
+      {
+        "command": "tether.ramDumpManager",
+        "title": "Working Memory / RAM-Dumps (Create / Edit / Delete)",
+        "category": "Tether"
+      },
+      {
         "command": "tether.ramDump",
         "title": "Rapid RAM Dump (Park a Distracting Thought)",
+        "category": "Tether"
+      },
+      {
+        "command": "tether.shutdownRitual",
+        "title": "Evening Shutdown Ritual",
         "category": "Tether"
       },
       {

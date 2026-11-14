@@ -38,14 +38,17 @@ Traditional productivity techniques frequently fail modern knowledge workers, wr
 - Struggling with initiation inertia? Trigger `Tether: 5m Micro-Start`.
 - Commit to **only 5 minutes** of work. If you still don't feel like continuing after 5 minutes, you have permission to stop guilt-free. If momentum kicks in, Tether smoothly rolls into a full focus session.
 
-### 🧠 4. Rapid RAM Dump (Park a Thought)
-- Sudden distracting ideas, errands, or impulse thoughts?
-- Press `Ctrl+Shift+P` -> `Tether: Rapid RAM Dump` to offload the thought straight into your persistent impulse list without opening a browser, switching workspaces, or losing your train of thought.
+### 🧠 4. Working Memory / RAM-Dumps & Rapid Impulse Buffer
+- **Full RAM-Dump CRUD Manager (`Tether: Working Memory / RAM-Dumps`)**: Create, auto-fill from your active file and enclosing symbol (`[NÅ]` / `[STATUS]` / `[NESTE STEG]`), edit, or delete structured save-states in `ramdumps.md`.
+- **Rapid Impulse Capture (`Tether: Park Impulse / Side-Quest`)**: Sudden distracting ideas or errands? Offload the thought straight into your persistent `impulses.md` checklist without leaving your code.
 
-### 🎨 5. Live Theme Adaptive
+### 🌙 5. Evening Shutdown Ritual
+- Cleanly resets the active Flowmodoro timer, captures a closing summary and tomorrow's first micro-step in `ramdumps.md` + `last_shutdown.json`, and counts remaining open impulses for **"Where Was I?"** the next day.
+
+### 🎨 6. Live Theme Adaptive
 - Fully respects your active VS Code theme colors (Omarchy, Tokyo Night, Gruvbox, Catppuccin, Default Dark+/Light+) with high-contrast text readability.
 
-### 🌐 6. Platform-Agnostic Editor Focus Sync
+### 🌐 7. Platform-Agnostic Editor Focus Sync
 - Automatically syncs window focus state (`vscode.window.onDidChangeWindowState`) to `editor_focus.json`.
 - Allows Tether Desktop on any OS (Linux, macOS, Windows) to minimize to tray or shrink to Mini-HUD whenever you are actively editing code.
 
@@ -55,12 +58,12 @@ Traditional productivity techniques frequently fail modern knowledge workers, wr
 
 | Indicator | State | Description |
 |:---|:---|:---|
-| `$(compass) 00:00 [KLAR]` | **Idle / Ready** | Timer is ready. Click anytime to start flow. |
+| `$(compass) 00:00 [KLAR]` | **Idle / Ready** | Timer is ready. |
 | `$(watch) 28:45 [FOKUS]` | **Flow / Focus** | Active count-up session. Riding the momentum wave. |
 | `$(coffee) 09:30 [PAUSE]` | **Earned Rest** | Proportional break countdown. Step away guilt-free. |
 | `$(zap) 04:15 [5M MIKRO]` | **Micro-Start** | 5-minute low-stakes session to beat initiation friction. |
 
-> **Pro Tip:** Simply click the status bar item to toggle between **Focus**, **Break**, and **Idle**!
+> **Pro Tip:** Click the status bar widget anytime to open the **Tether Hub** quick menu!
 
 ---
 
@@ -68,9 +71,13 @@ Traditional productivity techniques frequently fail modern knowledge workers, wr
 
 Access via Command Palette (`Ctrl+Shift+P` on Linux/Windows, `Cmd+Shift+P` on macOS):
 
+- `Tether: Open Tether Hub` — Quick control menu for Focus, Micro-Start, RAM-Dumps, Impulses, and Shutdown.
 - `Tether: Start / Pause Flow (Flowmodoro)` — Toggle your focus or earned break.
 - `Tether: 5m Micro-Start (Break Initiation Barrier)` — Launch a 5-minute micro-start.
-- `Tether: Rapid RAM Dump (Park a Distracting Thought)` — Offload racing thoughts immediately.
+- `Tether: Reset Flowmodoro Timer` — Reset the Flowmodoro timer back to Idle.
+- `Tether: Working Memory / RAM-Dumps (Create / Edit / Delete)` — Manage structured working memory save-states with auto-fill.
+- `Tether: Park Impulse / Side-Quest` — Offload racing thoughts immediately to `impulses.md` (alias: `Tether: Rapid RAM Dump`).
+- `Tether: Evening Shutdown Ritual` — End the workday cleanly and park tomorrow's first micro-step.
 - `Tether: Open Tether Desktop` — Bring up the full Tether desktop companion.
 
 ---
